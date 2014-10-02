@@ -28,7 +28,7 @@ class RedisTestCase(TestCase):
             try:
                 port = int(os.getenv('REDISBOX_PORT'))
                 self.__redis_client = redis.StrictRedis(port=port)
-            except (TypeError, redis.errors.ConnectionFailure):
+            except (TypeError, redis.ConnectionError):
                 raise RuntimeError(
                     'Seems that RedisBox is not running. ' +
                     'Do you run nosetests with --with-redisbox flag?')
